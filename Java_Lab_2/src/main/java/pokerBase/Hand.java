@@ -204,7 +204,14 @@ public class Hand {
 			ScoreHand(eHandStrength.RoyalFlush, 0, 0, 0);
 		}
 
-		// EVALUATE STRAIGHT FLUSH
+		// EVALUATE STRAIGHT FLUSH WITH ACE
+		else if (Straight == true && Flush == true && Ace) {
+			ScoreHand(eHandStrength.StraightFlush,
+					CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank()
+							.getRank(), 0, 0);
+		}
+		
+		//EVALUATE SPRING FLUSH WITHOUT ACE
 		// (Given in Spring Borgata)
 		else if (Straight == true && Flush == true) {
 			ScoreHand(eHandStrength.StraightFlush,
@@ -216,15 +223,8 @@ public class Hand {
 		
 		//First Case
 		else if (CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
-					.getRank() == CardsInHand.get(eCardNo.SecondCard.getCardNo())
-					.getRank().getRank()
-				&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
-						.getRank() == CardsInHand
-						.get(eCardNo.ThirdCard.getCardNo()).getRank().getRank()
-				&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
-						.getRank() == CardsInHand
-						.get(eCardNo.FourthCard.getCardNo()).getRank()
-						.getRank() ){
+					.getRank() == CardsInHand.get(eCardNo.FourthCard.getCardNo())
+					.getRank().getRank() ){
 				//Score hand
 				ScoreHand(eHandStrength.FourOfAKind, 
 					CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank().getRank(),
@@ -233,15 +233,8 @@ public class Hand {
 		
 		//Second Case
 		else if ((CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
-						.getRank() == CardsInHand.get(eCardNo.ThirdCard.getCardNo())
-						.getRank().getRank()
-				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
-					    .getRank() == CardsInHand
-						.get(eCardNo.FourthCard.getCardNo()).getRank().getRank()
-				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
-						.getRank() == CardsInHand
-						.get(eCardNo.FifthCard.getCardNo()).getRank()
-						.getRank())){
+						.getRank() == CardsInHand.get(eCardNo.FifthCard.getCardNo())
+						.getRank().getRank())){
 			
 				//Score Hand
 				ScoreHand(eHandStrength.FourOfAKind, 
@@ -253,9 +246,6 @@ public class Hand {
 		
 		//First Case
 		else if(CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
-					.getRank() == CardsInHand.get(eCardNo.SecondCard.getCardNo())
-					.getRank().getRank()
-				&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
 						.getRank() == CardsInHand
 						.get(eCardNo.ThirdCard.getCardNo()).getRank().getRank()
 				&& CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank()
@@ -272,9 +262,6 @@ public class Hand {
 		
 		//Second Case
 		else if(CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
-					.getRank() == CardsInHand.get(eCardNo.FourthCard.getCardNo())
-					.getRank().getRank()
-				&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
 						.getRank() == CardsInHand
 						.get(eCardNo.FifthCard.getCardNo()).getRank().getRank()
 				&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
@@ -293,9 +280,6 @@ public class Hand {
 		
 		//First Case
 		else if(CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
-				.getRank() == CardsInHand.get(eCardNo.SecondCard.getCardNo())
-				.getRank().getRank()
-			&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
 					.getRank() == CardsInHand
 					.get(eCardNo.ThirdCard.getCardNo()).getRank().getRank()){
 		
@@ -307,9 +291,6 @@ public class Hand {
 		}
 		//Second Case
 		else if(CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
-					.getRank() == CardsInHand.get(eCardNo.ThirdCard.getCardNo())
-					.getRank().getRank()
-				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
 						.getRank() == CardsInHand
 						.get(eCardNo.FourthCard.getCardNo()).getRank().getRank()){
 			
@@ -322,9 +303,6 @@ public class Hand {
 		
 		//Third Case
 		else if(CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
-				.getRank() == CardsInHand.get(eCardNo.FourthCard.getCardNo())
-				.getRank().getRank()
-			&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
 					.getRank() == CardsInHand
 					.get(eCardNo.FifthCard.getCardNo()).getRank().getRank()){
 			
